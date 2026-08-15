@@ -1,144 +1,546 @@
-<!DOCTYPE HTML>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Basu Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basuki Nath Kumar — Senior Software Engineer</title>
+<meta name="description" content="Basuki Nath Kumar — Senior Software Engineer building Java &amp; Spring Boot platforms for distributed systems at scale. NIT Calicut alumnus, ADP India.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230d0d0d'/%3E%3Ctext x='50' y='66' font-size='46' font-family='monospace' font-weight='bold' fill='%233987e5' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0d0d0d;
+    --surface:#1a1a19;
+    --ink:#ffffff;
+    --ink-2:#c3c2b7;
+    --muted:#898781;
+    --border:rgba(255,255,255,0.10);
+    --border-hover:rgba(255,255,255,0.22);
+    --accent:#3987e5;
+    --accent-soft:rgba(57,135,229,0.14);
+    --good:#0ca30c;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --wrap: 980px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.6;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:26px 26px;
+    background-position:-13px -13px;
+  }
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px;}
+  a{color:inherit;}
+  ::selection{background:var(--accent-soft);color:var(--ink);}
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">Who I am</a></li>
-							<li><a href="#two">What I do</a></li>
-							<li><a href="#three">Get in touch</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+  /* ---------- header / nav ---------- */
+  .nav-toggle-input{display:none;}
+  header.site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(13,13,13,0.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .logo{font-family:var(--mono);font-weight:700;font-size:15px;text-decoration:none;letter-spacing:-0.01em;}
+  .logo .cursor{color:var(--accent);animation:blink 1.1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  nav.site-nav{display:flex;align-items:center;gap:26px;font-family:var(--mono);font-size:13px;}
+  nav.site-nav a{text-decoration:none;color:var(--ink-2);transition:color .15s;}
+  nav.site-nav a:hover{color:var(--ink);}
+  nav.site-nav a.nav-cta{
+    color:var(--accent);border:1px solid var(--accent-soft);padding:6px 12px;border-radius:6px;
+    background:var(--accent-soft);
+  }
+  nav.site-nav a.nav-cta:hover{border-color:var(--accent);}
+  .nav-burger{display:none;cursor:pointer;font-size:20px;padding:6px;}
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  @media (max-width:760px){
+    nav.site-nav{
+      position:fixed;inset:60px 0 0 0;height:0;overflow:hidden;flex-direction:column;
+      align-items:flex-start;justify-content:flex-start;gap:0;background:var(--bg);
+      transition:height .2s ease;padding:0 24px;
+    }
+    nav.site-nav a{width:100%;padding:16px 0;border-bottom:1px solid var(--border);}
+    .nav-burger{display:block;}
+    .nav-toggle-input:checked ~ header .site-nav,
+    .nav-toggle-input:checked + header .site-nav{height:calc(100vh - 60px);overflow:auto;}
+  }
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>Hi, I am Basu</h1>
-							<p>Or you can call me Basuki Nath, which is my full name. </br>I am a full time Senior Member Technical at ADP India and an alumnus of NIT Calicut.</p>
-							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Learn more</a></li>
-							</ul>
-						</div>
-					</section>
+  section{padding:88px 0;border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;color:var(--accent);text-transform:lowercase;
+    margin:0 0 10px;letter-spacing:.02em;
+  }
+  .eyebrow::before{content:"// ";color:var(--muted);}
+  h2.section-title{font-size:26px;margin:0 0 30px;letter-spacing:-0.01em;}
+  p{color:var(--ink-2);}
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="#" class="image"><img src="images/nitLogo.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>My Education</h2>
-									<p>I have a Master Degree in Computer Applications (MCA) from National Institute of Technology, Calicut (NITC) and Bachelor degree from BNMU, Madhepura, Bihar. Other than this, I have O, A and B level certifications from National Institute of Electronics & Information Technology. I like to explore new things and learn them so I keep enrolling myself on different E-Learning platforms like Udemy, Udacity, Coursera etc. </p>
-									
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic2.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>My Skillsets</h2>
-									<p>Over the course of time, I have aquired skills in various technologies and frameworks. I am well experienced in managing Linux clusters, Cloud Services and virtual machines. I have worked on various Linux / Windows Servers and DevOps tools. I have pretty much good experience in User management, Networking, troubleshooting, etc. Other than this, I am skilled in various Amazon Web Services related to Data Storage, Security, Service Selection, and other Cloud-specific patterns and technologies. I know C/C++, Java & its related technologies, and Python. I have worked with MySQL, Oracle, and MongoDB. Currently, I am working on Micro Services and Domain Driven Design.</p>
-									
-								</div>
-							</div>
-						</section>
-						
-					</section>
+  /* ---------- hero ---------- */
+  .hero{padding-top:64px;padding-bottom:72px;}
+  .term{
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    overflow:hidden;box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--border);
+  }
+  .term-dot{width:11px;height:11px;border-radius:50%;}
+  .term-dot.r{background:#e34948;} .term-dot.y{background:#eda100;} .term-dot.g{background:#0ca30c;}
+  .term-title{margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--muted);}
+  .term-body{padding:26px 28px 30px;font-family:var(--mono);font-size:14.5px;}
+  .term-line{margin-bottom:14px;}
+  .term-prompt{color:var(--good);}
+  .term-path{color:var(--accent);}
+  .term-out{color:var(--ink-2);margin:2px 0 18px;}
+  .hero-name{font-size:38px;font-weight:800;color:var(--ink);margin:2px 0 6px;font-family:var(--sans);letter-spacing:-0.02em;}
+  .hero-role{font-size:15px;color:var(--ink-2);margin-bottom:4px;}
+  .hero-sub{font-size:13px;color:var(--muted);margin-bottom:18px;}
+  .hero-summary{font-family:var(--sans);font-size:14.5px;color:var(--ink-2);line-height:1.7;max-width:640px;}
 
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>What I do</h2>
-							<p>I am working as a Senior Member Technical at <a href="https://www.adp.in/">ADP.</a> ADP deals with Human Capital Management. It provides a complete solution to the companies for the recruitment to the retirement of their employee. It helps organizations to manage their Payroll, tax and benefits administration solutions and lot other things. Currently, the company is serving in more than 150 countries. I am working with different scenarios of local tax systems of United States. Currently, my job is to design and build micro services to help a next generation payroll system to calculate different tax based on different states of US. Mostly I am working on Spring, SpringBoot, thymeleaf, Angular and other associates technologies. Some of the tools I work on are propritory. </p>
-							
-						</div>
-					</section>
+  .status-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:26px;font-family:var(--mono);font-size:13px;}
+  .status-pill{display:inline-flex;align-items:center;gap:7px;color:var(--ink-2);}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--good);position:relative;}
+  .status-dot::after{
+    content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--good);
+    animation:pulse 2s ease-out infinite;
+  }
+  @keyframes pulse{0%{transform:scale(0.6);opacity:.8;}100%{transform:scale(1.8);opacity:0;}}
 
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>I am available on almost all social media platforms. You can reach out to me and we can share some info with each other. I like exploring new domains and Ideas and I strongly feel that no idea is less important or useless.</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Do not click. It doesn't work. :D</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
-											<h3>Social</h3>
-											<ul class="icons">
-																								
-												<li><a href="https://github.com/bsknath" class="icon brands fa-github"><span class="label">GitHub</span></a></li>											
-												<li><a href="https://www.linkedin.com/in/basukinathkumar/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-												<li><a href="https://twitter.com/localbrucewayne" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-												<li><a href="https://www.instagram.com/localbrucewayne/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-											</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
+  .link-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
+  .btn{
+    font-family:var(--mono);font-size:13px;text-decoration:none;padding:10px 16px;border-radius:7px;
+    border:1px solid var(--border);color:var(--ink-2);transition:all .15s;
+  }
+  .btn:hover{border-color:var(--border-hover);color:var(--ink);}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;}
+  .btn.primary:hover{background:#2f74c9;}
 
-			</div>
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;}
+  .about-grid p{font-size:15px;}
+  .focus-list{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:13px;}
+  .focus-list li{padding:9px 0;border-bottom:1px solid var(--border);color:var(--ink-2);display:flex;justify-content:space-between;gap:12px;}
+  .focus-list li b{color:var(--ink);font-weight:600;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;gap:28px;}}
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Basu. All rights reserved.</li><li>Design Courtesy: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+  /* ---------- skills ---------- */
+  .skill-row{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid var(--border);align-items:baseline;flex-wrap:wrap;}
+  .skill-row:last-child{border-bottom:none;}
+  .skill-cat{font-family:var(--mono);font-size:12px;color:var(--muted);width:130px;flex-shrink:0;text-transform:uppercase;letter-spacing:.04em;}
+  .chip-group{display:flex;flex-wrap:wrap;gap:8px;flex:1;}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;color:var(--ink-2);border:1px solid var(--border);
+    padding:5px 10px;border-radius:5px;background:var(--surface);white-space:nowrap;
+  }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  /* ---------- experience ---------- */
+  .role-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+  .role-head h3{font-size:18px;margin:0;}
+  .role-head .role-date{font-family:var(--mono);font-size:12.5px;color:var(--muted);}
+  .role-sub{color:var(--muted);font-size:13.5px;margin:0 0 34px;}
 
-	</body>
+  details.proj{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    margin-bottom:12px;overflow:hidden;
+  }
+  details.proj summary{
+    list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;
+    justify-content:space-between;gap:16px;
+  }
+  details.proj summary::-webkit-details-marker{display:none;}
+  .proj-title{font-weight:600;font-size:15px;color:var(--ink);}
+  .proj-chevron{font-family:var(--mono);color:var(--accent);transition:transform .18s;flex-shrink:0;}
+  details.proj[open] .proj-chevron{transform:rotate(90deg);}
+  .proj-tags{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:5px;}
+  .proj-body{padding:0 22px 22px;}
+  .proj-body ul{margin:0;padding-left:20px;}
+  .proj-body li{margin-bottom:11px;font-size:14px;color:var(--ink-2);}
+  .proj-body li:last-child{margin-bottom:0;}
+  .proj-body strong{color:var(--ink);}
+
+  /* ---------- impact ---------- */
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+  .stat-tile{background:var(--surface);padding:26px 20px;}
+  .stat-value{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--accent);letter-spacing:-0.01em;}
+  .stat-label{font-size:12.5px;color:var(--muted);margin-top:6px;}
+  @media (max-width:760px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- education / leadership / certs ---------- */
+  .tri-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px;}
+  .tri-grid h4{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:0 0 16px;}
+  .edu-item{margin-bottom:14px;}
+  .edu-item .deg{font-size:14.5px;color:var(--ink);font-weight:600;}
+  .edu-item .school{font-size:13px;color:var(--muted);}
+  ul.plain{list-style:none;margin:0;padding:0;}
+  ul.plain li{font-size:13.5px;color:var(--ink-2);padding-bottom:14px;position:relative;padding-left:16px;}
+  ul.plain li::before{content:"›";position:absolute;left:0;color:var(--accent);}
+  .cert-badge{
+    display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:8px;
+    padding:12px 14px;margin-bottom:10px;font-size:13px;background:var(--surface);
+  }
+  .cert-badge .medal{font-size:16px;}
+  @media (max-width:760px){.tri-grid{grid-template-columns:1fr;gap:30px;}}
+
+  /* ---------- book ---------- */
+  .book-card{
+    display:flex;gap:28px;align-items:center;background:var(--surface);border:1px solid var(--border);
+    border-radius:12px;padding:32px;
+  }
+  .book-cover{
+    width:110px;height:150px;flex-shrink:0;border-radius:6px;border:1px solid var(--border);
+    background:linear-gradient(160deg, var(--accent-soft), transparent 70%);
+    display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+    font-size:11px;color:var(--accent);text-align:center;padding:10px;
+  }
+  .book-title{font-size:19px;font-weight:700;margin:0 0 4px;}
+  .book-byline{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-bottom:14px;}
+  .book-blurb{font-size:14px;color:var(--ink-2);margin-bottom:18px;max-width:520px;}
+  @media (max-width:760px){.book-card{flex-direction:column;align-items:flex-start;}}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:flex;flex-wrap:wrap;gap:14px;}
+  .contact-card{
+    flex:1;min-width:200px;border:1px solid var(--border);border-radius:10px;padding:22px;
+    background:var(--surface);text-decoration:none;transition:border-color .15s;
+  }
+  .contact-card:hover{border-color:var(--border-hover);}
+  .contact-card .label{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;}
+  .contact-card .value{font-size:15px;color:var(--ink);font-weight:600;}
+
+  footer{padding:36px 0 60px;text-align:center;}
+  footer p{font-family:var(--mono);font-size:12px;color:var(--muted);}
+  footer a{color:var(--muted);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="logo">~/basuki<span class="cursor">_</span></a>
+    <label for="nav-toggle" class="nav-burger">☰</label>
+    <nav class="site-nav">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#impact">impact</a>
+      <a href="#book">book</a>
+      <a href="#contact">contact</a>
+      <a href="resume.pdf" class="nav-cta" target="_blank" rel="noopener">résumé ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="term">
+      <div class="term-bar">
+        <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+        <span class="term-title">basuki@career — -zsh</span>
+      </div>
+      <div class="term-body">
+        <div class="term-line"><span class="term-prompt">$</span> whoami</div>
+        <div class="hero-name">Basuki Nath Kumar</div>
+        <div class="hero-role">Senior Software Engineer · Java &amp; Distributed Systems · AWS · Oracle Multicloud Professional Architect</div>
+        <div class="hero-sub">NIT Calicut Alumnus · Hyderabad, India</div>
+
+        <div class="term-line" style="margin-top:22px;"><span class="term-prompt">$</span> <span class="term-path">cat</span> summary.txt</div>
+        <p class="hero-summary">Senior Software Engineer with 5+ years building Java and Spring Boot platforms for enterprise payroll and compliance at ADP. Architected event-driven, CQRS, and sharded systems on AWS that support 2M+ statements/day for 15M+ employees across 13 countries. Also builds AI tooling that saves 35 dev-hours/week by encoding architectural knowledge.</p>
+      </div>
+    </div>
+
+    <div class="status-row">
+      <span class="status-pill"><span class="status-dot"></span> open to interesting distributed-systems problems</span>
+    </div>
+
+    <div class="link-row">
+      <a class="btn primary" href="mailto:bsknath@gmail.com">Email me</a>
+      <a class="btn" href="https://linkedin.com/in/basukinathkumar" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/basukinath" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">about</p>
+      <h2 class="section-title">Backend systems at payroll scale</h2>
+      <p>I've spent the last five years at ADP building the platforms behind payroll and tax compliance for millions of employees across thirteen countries — the kind of domain where correctness isn't optional and "eventually consistent" needs a very careful definition. Most of that work sits at the intersection of event-driven architecture, sharded data systems, and keeping a distributed pipeline honest under peak load.</p>
+      <p>Outside the day job, I write about system design and distributed systems, mentor engineers moving into senior roles, and recently published a book distilling what actually gets asked — and what actually matters — in senior Java interviews.</p>
+    </div>
+    <ul class="focus-list">
+      <li><span>Base</span> <b>Hyderabad, India</b></li>
+      <li><span>Focus</span> <b>Distributed Systems</b></li>
+      <li><span>Core stack</span> <b>Java · Spring Boot · AWS</b></li>
+      <li><span>Currently</span> <b>Payroll Intelligence Platform, ADP</b></li>
+      <li><span>Education</span> <b>MCA, NIT Calicut</b></li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow">ls ./skills</p>
+    <h2 class="section-title">Technical skills</h2>
+
+    <div class="skill-row">
+      <div class="skill-cat">Languages</div>
+      <div class="chip-group">
+        <span class="chip">Java</span><span class="chip">Groovy</span><span class="chip">Kotlin</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat">Frameworks</div>
+      <div class="chip-group">
+        <span class="chip">Spring Boot</span><span class="chip">Spring Cloud</span><span class="chip">Spring Batch</span>
+        <span class="chip">Spring JDBC</span><span class="chip">Resilience4j</span><span class="chip">ShedLock</span><span class="chip">Micrometer</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat">Data</div>
+      <div class="chip-group">
+        <span class="chip">Elasticsearch</span><span class="chip">MariaDB (sharded)</span><span class="chip">Redis</span>
+        <span class="chip">CQEngine</span><span class="chip">Liquibase</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat">Cloud</div>
+      <div class="chip-group">
+        <span class="chip">AWS S3</span><span class="chip">SQS</span><span class="chip">SNS</span><span class="chip">STS</span>
+        <span class="chip">Fargate</span><span class="chip">EventBridge</span><span class="chip">EKS</span>
+        <span class="chip">Docker</span><span class="chip">Kubernetes</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat">Observability</div>
+      <div class="chip-group">
+        <span class="chip">OpenTelemetry</span><span class="chip">Splunk</span><span class="chip">Prometheus</span><span class="chip">Grafana</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat">Testing</div>
+      <div class="chip-group">
+        <span class="chip">JUnit 5</span><span class="chip">Cucumber BDD</span><span class="chip">Testcontainers</span><span class="chip">Spring Cloud Contract</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat">AI Tools</div>
+      <div class="chip-group">
+        <span class="chip">GitHub Copilot</span><span class="chip">Claude</span><span class="chip">Kiro CLI</span>
+      </div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-cat">Patterns</div>
+      <div class="chip-group">
+        <span class="chip">DDD</span><span class="chip">Hexagonal</span><span class="chip">CQRS</span><span class="chip">Event-Driven</span>
+        <span class="chip">Transactional Outbox</span><span class="chip">Pipeline</span><span class="chip">Saga</span>
+        <span class="chip">Circuit Breaker</span><span class="chip">Claim Check</span><span class="chip">Feature Toggles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow">experience</p>
+    <h2 class="section-title">Where I've built</h2>
+
+    <div class="role-head">
+      <h3>ADP India, Hyderabad — Payroll Intelligence Platform</h3>
+      <span class="role-date">Oct 2020 – Present</span>
+    </div>
+    <p class="role-sub">Senior Member Technical (Sr. Software Engineer)</p>
+
+    <details class="proj" open>
+      <summary>
+        <div>
+          <div class="proj-title">Statement Generation Platform</div>
+          <div class="proj-tags">Java · Spring Boot · Elasticsearch · MariaDB (sharded) · AWS S3/SQS/SNS · Spring Batch · ShedLock · Resilience4j · OpenTelemetry</div>
+        </div>
+        <span class="proj-chevron">▸</span>
+      </summary>
+      <div class="proj-body">
+        <ul>
+          <li>Architected a configurable pipeline engine running <strong>~100s of JSON-defined workflows</strong>, executing DAG-based data aggregation across dozens of APIs and multiple microservices — generating <strong>2M+ statements/day (peak 7.63M)</strong> across 13 countries with zero code changes for new statement types.</li>
+          <li>Designed command-range fan-out, partitioning large workloads across pods via SQS-based backpressure — <strong>10x throughput</strong> gain through horizontal scaling.</li>
+          <li>Built a CQRS architecture: MariaDB writes sharded by country, Elasticsearch reads with a CQEngine in-memory fallback — <strong>1,000+ req/s, 40% faster</strong> on simple queries.</li>
+          <li>Reached <strong>99.9% pipeline completion</strong> via circuit breakers, distributed locking, exponential backoff retry, and per-range fault isolation.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div>
+          <div class="proj-title">Event-Driven Messaging Framework (Event Machine)</div>
+          <div class="proj-tags">Java · Spring Boot · AWS SQS/SNS/S3/EventBridge · MariaDB · OpenTelemetry · Prometheus</div>
+        </div>
+        <span class="proj-chevron">▸</span>
+      </summary>
+      <div class="proj-body">
+        <ul>
+          <li>Designed a <strong>Transactional Outbox</strong> event platform — events persisted atomically in the same DB transaction as the business mutation, then published asynchronously to SNS/SQS; adopted by multiple teams.</li>
+          <li>Built a deduplication state machine eliminating double-processing across pods, with configurable per-listener error strategies, backoff, and Prometheus metrics.</li>
+          <li>Designed a <strong>Claim Check</strong> pattern for large payloads (GZIP → S3, pointer in SQS) and multi-queue horizontal scaling via greedy pod-level queue assignment.</li>
+          <li>Led the <strong>Kafka → SQS/SNS migration</strong> with zero operational overhead, preserving at-least-once delivery guarantees.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div>
+          <div class="proj-title">Payroll Computation Engine</div>
+          <div class="proj-tags">Java · Spring Boot · MariaDB (sharded) · Redis · CQEngine · Spring JDBC</div>
+        </div>
+        <span class="proj-chevron">▸</span>
+      </summary>
+      <div class="proj-body">
+        <ul>
+          <li>Built the gross-to-net payroll engine across <strong>50+ tax jurisdictions</strong>, with internal policy execution tools and hot-deployable S3 rule packages.</li>
+          <li>Designed a compressed BLOB pattern (GZIP JSON, <strong>10:1 compression</strong>) — a single INSERT per calculation instead of 500 normalized rows, with CQEngine in-memory indexing for sub-millisecond reporting queries.</li>
+          <li>Architected isolated custom thread pools with OpenTelemetry context propagation, preventing cross-shard interference at peak load.</li>
+          <li>Enforced Hexagonal Architecture via ArchUnit — zero framework dependencies in the domain layer, letting the infra layer migrate from JPA to Spring JDBC in isolation.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div>
+          <div class="proj-title">Payment Orchestration Service</div>
+          <div class="proj-tags">Java · Spring Boot · MariaDB · Event Machine · Caffeine · ShedLock</div>
+        </div>
+        <span class="proj-chevron">▸</span>
+      </summary>
+      <div class="proj-body">
+        <ul>
+          <li>Designed multi-country payment orchestration — coordinating statement generation, tax filing, money movement, and partner notifications across 13 countries.</li>
+          <li>Implemented a <strong>bi-temporal data model</strong> (transaction time + valid time), supporting retroactive payroll corrections while preserving full audit history.</li>
+          <li>Built a choreography-based saga and year-end throttling — queue-based rate limiting with stuck-process detection to prevent downstream cascade failures.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="proj">
+      <summary>
+        <div>
+          <div class="proj-title">AI Developer Agents &amp; Platform Productivity</div>
+          <div class="proj-tags">AI Agents · GitHub Copilot · Claude · Kiro CLI · Splunk · Knowledge Bases</div>
+        </div>
+        <span class="proj-chevron">▸</span>
+      </summary>
+      <div class="proj-body">
+        <ul>
+          <li>Engineered AI-powered developer agents backed by curated knowledge bases — architecture docs, service interaction maps, failure-mode catalogs, and API contracts — for contextual debugging assistance across microservices.</li>
+          <li>Built a structured knowledge-base system encoding tribal knowledge into queryable documents — <strong>35 dev-hours/week saved</strong>, new-engineer onboarding cut from <strong>6 to 3 months</strong>.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="impact">
+  <div class="wrap">
+    <p class="eyebrow">./impact --summary</p>
+    <h2 class="section-title">Selected impact</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-value">7.63M</div><div class="stat-label">events/day peak</div></div>
+      <div class="stat-tile"><div class="stat-value">1,000+</div><div class="stat-label">req/s query layer</div></div>
+      <div class="stat-tile"><div class="stat-value">99.9%</div><div class="stat-label">pipeline completion</div></div>
+      <div class="stat-tile"><div class="stat-value">4h→15m</div><div class="stat-label">E2E test runtime</div></div>
+      <div class="stat-tile"><div class="stat-value">60%</div><div class="stat-label">less integration dev time</div></div>
+      <div class="stat-tile"><div class="stat-value">35h/wk</div><div class="stat-label">saved via AI agents</div></div>
+      <div class="stat-tile"><div class="stat-value">2M+</div><div class="stat-label">statements/day</div></div>
+      <div class="stat-tile"><div class="stat-value">15M+</div><div class="stat-label">employees processed</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="more">
+  <div class="wrap tri-grid">
+    <div>
+      <h4>Education</h4>
+      <div class="edu-item">
+        <div class="deg">Master of Computer Applications</div>
+        <div class="school">NIT Calicut · 2020</div>
+      </div>
+      <div class="edu-item">
+        <div class="deg">Bachelor of Computer Applications</div>
+        <div class="school">BNMU, Madhepura · 2017</div>
+      </div>
+    </div>
+    <div>
+      <h4>Leadership</h4>
+      <ul class="plain">
+        <li>Mentored 3 engineers — reduced onboarding 6→3 months, established architecture standards across 5+ teams.</li>
+        <li>Led production on-call rotations — diagnosed year-end incidents at peak load, implemented capacity planning.</li>
+        <li>Authored 20+ architecture decision records; writes technical articles on LinkedIn covering system design and distributed systems.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Certifications</h4>
+      <div class="cert-badge"><span class="medal">🏅</span> SnowPro Associate: Platform — Snowflake</div>
+      <div class="cert-badge"><span class="medal">🏅</span> OCI Multicloud Architect Professional — Oracle</div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <p class="eyebrow">publication</p>
+    <h2 class="section-title">Book</h2>
+    <div class="book-card">
+      <div class="book-cover">JAVA<br>INTERVIEWS<br><br>beyond the<br>boilerplate<br>questions</div>
+      <div>
+        <div class="book-title">Java Interviews: Beyond the Boilerplate Questions</div>
+        <div class="book-byline">by Basuki Nath Kumar · Kindle Edition, Amazon</div>
+        <p class="book-blurb">A field guide to the Java and Spring Boot interviews that actually happen at the senior level — past the LeetCode round and into JVM internals, distributed-systems tradeoffs, and the follow-up questions that separate a pass from an offer.</p>
+        <a class="btn primary" href="https://www.amazon.in/dp/B0HCRMD847" target="_blank" rel="noopener">Get it on Amazon ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <p class="eyebrow">mail basuki</p>
+    <h2 class="section-title">Get in touch</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:bsknath@gmail.com">
+        <div class="label">Email</div>
+        <div class="value">bsknath@gmail.com</div>
+      </a>
+      <a class="contact-card" href="https://linkedin.com/in/basukinathkumar" target="_blank" rel="noopener">
+        <div class="label">LinkedIn</div>
+        <div class="value">/in/basukinathkumar</div>
+      </a>
+      <a class="contact-card" href="https://github.com/basukinath" target="_blank" rel="noopener">
+        <div class="label">GitHub</div>
+        <div class="value">@basukinath</div>
+      </a>
+      <div class="contact-card" style="cursor:default;">
+        <div class="label">Location</div>
+        <div class="value">Hyderabad, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2026 Basuki Nath Kumar · Built by hand, no template · <a href="https://github.com/basukinath/basukinath.github.io" target="_blank" rel="noopener">view source</a></p>
+</footer>
+
+</body>
 </html>

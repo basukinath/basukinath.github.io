@@ -1,37 +1,21 @@
-# bsknath.github.io
-# new updated
-```
-Hyperspace by HTML5 UP
-html5up.net | @ajlkn
-Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+# basukinath.github.io
 
+Personal portfolio — hand-built, single self-contained `index.html`, no template, no build step, no JavaScript framework (the mobile menu is a pure-CSS checkbox toggle).
 
-So I've had the wireframe for this particular design kicking around for some time, but with all
-the other interesting (and in some cases, semi-secret) projects I've been working on it took me
-a little while to get to actually designing and coding it. Fortunately, things have eased up
-enough for me to finaly get around to it, so I'm happy to introduce Hyperspace: a fun, blocky,
-one-page design with a lot of color, a bit of animation, and an additional "generic" page template
-(because hey, even one-page sites usually need an interior page or two). Hope you dig it :)
+## Files
 
-Demo images* courtesy of Unsplash, a radtastic collection of CC0 (public domain) images
-you can use for pretty much whatever.
+- `index.html` — the whole site. Dark, terminal-inspired, one page.
+- `resume.pdf` — downloadable résumé, linked from the nav and hero.
 
-(* = not included)
+## Deploying (replacing the current site)
 
-AJ
-aj@lkn.io | @ajlkn
+This repo currently runs the "Hyperspace" HTML5 UP template (`assets/`, `images/`, `generic.html`, `elements.html`, `LICENSE.txt`). To swap it for this redesign:
 
+1. In the repo, delete: `assets/`, `images/`, `generic.html`, `elements.html`. (`LICENSE.txt` can stay or go — your call.)
+2. Add `index.html` and `resume.pdf` from this folder, overwriting the existing `index.html`.
+3. Commit and push to `main` (or whichever branch Pages is set to build from — check **Settings → Pages**).
+4. GitHub Pages rebuilds automatically in a minute or two. Hard-refresh `https://basukinath.github.io/` to see it (browsers cache GitHub Pages aggressively — a normal refresh may still show the old template).
 
-Credits:
+## Editing later
 
-	Demo Images:
-		Unsplash (unsplash.com)
-
-	Icons:
-		Font Awesome (fontawesome.io)
-
-	Other:
-		jQuery (jquery.com)
-		Scrollex (github.com/ajlkn/jquery.scrollex)
-		Responsive Tools (github.com/ajlkn/responsive-tools)
-```
+Everything — HTML, CSS, copy — lives in `index.html`. There's no build pipeline: edit the file, commit, push. Content sections are ordered: hero → about → skills → experience → impact → education/leadership/certifications → book → contact.
